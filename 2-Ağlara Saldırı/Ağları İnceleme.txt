@@ -1,0 +1,11 @@
+Etraftaki Ağları Görme:
+
+airodump-ng -> ağlara özel bilgi toplamak için kullanılan araçtır.
+airodump-ng wlan0mon -> Etraftaki ağların bilgilerini gösterir. 
+
+Belirli bir ağın bilgilerin toplama:
+
+airodump-ng --channel 3 --bssid MACadresi --write txtDosyası wlan0mon -> ağın kanalını ve mac adresini girerek o ağa bağlı olan
+cihazları görebiliriz. write ile ağdan alınan bilgileri dosyaya kaydederiz. Kullanması zorunlu değildir
+
+write ile kaydedilen dosyalar arasından cap dosyasını wireshark programında açarak ağ içerisinde giden gelen istekleri görebiliriz

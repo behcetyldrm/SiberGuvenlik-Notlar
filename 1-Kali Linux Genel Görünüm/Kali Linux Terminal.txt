@@ -1,0 +1,21 @@
+setxkbmap tr -> klavyeyi türkçe yapar
+ls -> bulunulan klasörün içindeki dosyaları gösterir
+cd klasörAdı -> o klaösre gider
+pwd -> nerde olduğumuzu görürüz
+mkdir -> klasör oluşturur
+cp dosyaAdı klsörAdı/dosyaAdı -> seçilen dosyayı belirtilen yere kopyalar
+rm dosyaAdı -> dosyayı siler
+rm -r klasörAdı -> klasörü siler
+mv dosyaAdı klsörAdı/dosyaAdı -> seçilen dosyayı keser ve belirtilen yere yapıştırır
+touch dosyAdı -> dosya oluşturur
+cat dosyAdı -> dosya içeriğini okur
+nano dosyAdı -> dosyayı düzenleme ekranını açar
+sudo su -> root'a geçiş yapar
+ls -la -> gizli dosyaları ve dosya ayrıntılarını gösterir
+ifconfig -> ağ bilgilerini gösterir
+unzip DosyaAdı -> zip dosyasını çıkartır
+nano /etc/dhcp/dhclient.conf -> dns değiştirmek için giriyoruz
+leafpad /etc/resolv.conf -> dns değişmediğinde kökten cihaz dns'ini değiştirmek için kullanılır
+iwconfig -> wireless bağlantısını daha detaylı bir şekilde gösterir
+ip addr -> ip ve mac adreslerini gösterir
+cat txtDosyası | greb kelime -> seçilen dosyada belirtilen kelimenin geçtiği kelimeleri gösterir

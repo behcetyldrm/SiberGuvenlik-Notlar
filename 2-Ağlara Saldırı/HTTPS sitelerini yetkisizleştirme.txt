@@ -1,0 +1,17 @@
+Https sitelerindeki şifreleri çalabilmek için siteleri http yapmamız lazım ama günümüzde artık hsts teknolojisi(her koşulda https yap)
+bu işi neredeyse imkansız hale getiriyor. Ama bettercap'te bununda bir yolu var. Bu yol ile .cap dosyamız var(hstshijack) bunun içine
+eklenen sayfaları .com değil .corn olarak açıyor ve http oluyor ama bu yöntem default halde siteleri bozuyor.
+
+hstshijack/hstshijack -> hstshijack.cap dosyasını başlatır
+
+/usr/local/share/bettercap/caplets/hstshijack klasöründeki dosyaları sildik ATIL SAMANCIOĞLU hocamızın github'daki hstshijack deposunu
+indirdik ve bu klasöre attık. BU işlem hstshijack'in hatasız hali
+
+belirtilen dosya yolunda .cap dosyasını nano ile açarak içerisine site eklemesi yapbiliriz
+
+hstshijack.targets -> bu bölüm .com uzantılı siteler yazılır. Yani http'ye dönüştürülecek siteleri buraya ekliyoruz.
+
+hstshijack.replacements -> bu bölüme .com uzantılı siteyi .corn uzantısı ile ekliyoruz ve sahte siteyi oluşturuyoruz aynı işlemi domain
+kısmında da yapıyoruz
+
+bu işlem pekte yararlı değildir. yani çoğu zaman çalışmaz ama bazen çalışabilir

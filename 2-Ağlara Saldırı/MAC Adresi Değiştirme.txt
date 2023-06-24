@@ -1,0 +1,10 @@
+ifconfig wlan0 down -> interneti kapatır
+macchanger --random wlan0 -> wlan0 olan bağlantının MAC adresini rastgele değiştirir
+ifconfig wlan0 up -> interneti açar
+service NetworkManager restart -> interneti yeniden başlatır(hat olursa kullanılır)
+
+2. Yöntem:
+
+ifconfig wlan0 down
+ifconfig wlan0 hw ether 00:0a:c8:22:9b:11 -> ifconfig üzerinden kendimiz MAC atarız
+ifconfig wlan0 up

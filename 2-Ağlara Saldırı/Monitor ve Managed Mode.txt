@@ -1,0 +1,8 @@
+Managed Mod -> İnternet kullanılabilir olduğu moddur
+Monitor Mod -> İnternet kullanılamaz ama etraftaki Wi-fi'lerden bilgi toplanabilir
+
+Monitor Mod'a Geçme:
+
+airmon-ng start wlan0 -> interneti monitor moda geçirir
+airmon-ng stop wlan0mon -> managed moda geçer. ağ adının farklı olması monitor moddan kaynaklıdır
+ifconfig wlan0 mode monitor -> monitor moda geçmenin 2. yöntemi

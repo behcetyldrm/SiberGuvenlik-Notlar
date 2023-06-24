@@ -1,0 +1,42 @@
+Nmap, hedef cihazdaki kullanılan sevisleri vb. tarar ve bunlarda bir açık olabilir mi veya hangi sürümleri kullanıyor bunları söyler.
+https://www.stationx.net/nmap-cheat-sheet/ -> nmap kodlarını araştırmak için
+
+nmap -v -sS -A -T4 hedefIP -> hedef sunucu veya cihazın ip'sinde tarama yapar ve açık portları, kullanılan servisleri ve sistem sürümlerini
+tarar. -v tüm ayrıntıları yazar, -A işletim sistemini tarar ve kullanılan sürümleri yazar, -sS portları tarar, -T4 taramanın hangi hızda
+olacağını belirtir.
+
+Hacklemeye giriş:
+
+msfconsole -> metasploit framework'üne giriş yapar. bu framework'ün içinde ftp,ssh gibi servislerin açıklarını sömürmek için program
+yazmaya gerektirmeden direkt kısa komutlarla sömürmemize yardımcı oluyor. örneğin saldırı yapacağımızı sunucunun kullandığı servisleri
+nmap ile öğrendikten o servisin sürümünü internette aratarak açık var mı diye bakabiliriz. rapid7 sayfasında bu açıkların msfc için
+kısa komutları oluyor. Aşağıdaki kod ftp servisinin 2.3.4 sürümündeki açığı uzun kodlar yazmadan sömürmemizi sağlıyor. sunucunun ip
+adresini verdikten sonra o sunucuya bu kodları çalıştırarak giriş yapıyor
+
+use exploit/unix/ftp/vsftpd_234_backdoor -> makinemizin kullandığı ftp servisinin sürümündeki açığı kullanmamızı sağlar.
+
+show options -> modüle girdikten sonra ayarlar kısmına giriyoruz ve burada rhosts ve rport kısımları var rhosts hangi IP'nin 21. portuna
+gideceğim(rpost) anlamına geliyor. en alttaki exploit target'taki automatic ise rhosts'u otomatikk seçer
+
+set rhosts hedefIP -> burada saldırı yapacağımız sunucunun IP adresini ekliyoruz.
+
+exploit -j -z ->  saldırıyı başlatır. ama sisteme giriş yapmaz sadece sisteme bağlanacak yolu ayarlar
+
+sessions -l -> sisteme bağlanmak için açılan yolları gösterir
+
+sessions id -> yolu aktif hale getirir sisteme girer. sisteme girdiğimizi uname -a ile sistemin adını öğrenebiliriz
+
+background -> hack'lenilen sistemden çıkar
+
+Samba Servisinden Hackleme:
+
+use exploit/multi/samba/usermap_script -> metasploitable makinemizin samba sürümünde bir açık olduğunu bulduk ve modül ile bu açığı
+kullandık.
+
+set rhosts hedefIP -> modülün hangi cihaz üzerinde kullanılacağını belirtiyoruz.
+
+Meterpreter:
+
+Sunucuların kullandığı servislerdeki açıklarda bazen meterpreter erişimi olabilir. Bu erişim saldırı yapılan sunucuda birçok komut çalıştırma
+olanağı tanır. Örneğin mikrofona, kameraya erişim, kendi pc'mizden dosya aktarımı, sunucuda dosyalar oluşturma, silme ve okuma gibi birçok
+işlem gerçekleştirme olanağı tanır.

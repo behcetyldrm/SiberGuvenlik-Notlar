@@ -1,0 +1,19 @@
+Önceki işlemlerdeki gibi hangi ağın şifresini kırmak istiyorsak o ağın bilgilerini toplamalıyız. Ağımızı kırmak için şifreleme türü
+WEP olamlıdır.
+
+Ağa özel bilgi toplarken şifreyi kırmak için --write komutu kullanılmalı çünkü .cap dosyası ile kıracağız
+
+aircrack-ng -> adından anlaşılacağı üzere şifre kırma işlemlerinde kullanılır
+aircrack-ng wepKirma-01.cap -> yazdırdığımız .cap dosyasını aircrack-ng'ye veriyoruz ve bu araç WEP şifrelemede kullanılan IV'leri
+toplayarak ortaya şifreyi çıkarıyor.
+
+Ağda Fazla İnternet kullanılmıyor ise:
+
+Eğer fazla internet kullanılmıyorsa paket sayısı az olacağı için aircrack şifreyi kıramaz bizde bu yüzden kendi cihazımızı ağdaymış
+gibi göstereceğiz ve fake paketler yollayarak şifreyi kıracağız.
+
+aireplay-ng --fakeauth 0 -a modemMAC -h benimMAC wlan0mon -> fakeauth ile ne kadar paket atacağımızı giriyoruz 
+sınırsız süre kalacaksak 0 yazmak yeterli olur. farklı sayı girer isek o kadar paket gönderdikten sonra ağdan çıkar
+
+aireplay-ng --arpreplay -b 50:0F:F5:B3:84:51 -h 6c:60:eb:86:b7:90 wlan0mon -> burada ağa sahte paketler göndererek paket sayısını
+arttıyoruz ve şifre kırma işlemi hızlanıyor 

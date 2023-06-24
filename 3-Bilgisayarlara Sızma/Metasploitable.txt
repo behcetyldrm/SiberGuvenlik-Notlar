@@ -1,0 +1,7 @@
+Metasploitable, bilgisayarlardaki verileri çalmayı pratik edebilceğimiz zafiyetli bir makinedir.
+ad: msfadmin
+şifre: msfadmin
+
+shh giriş: 
+
+ssh -oHostKeyAlgorithms=+ssh-dss msfadmin@10.0.2.8

@@ -1,0 +1,19 @@
+WPA şifrelerini kırmak için handshake yakalamamız gerekir. Handshake ağa bağlanırken modeme iletilen paketlerdir ama bu paketlerde
+şifre bulunmaz sadece şifre bu paketlere iletilir ve doğruysa ağa giriş yapılır. bizde bir wordlist oluşturup bu handshake paketlerine
+tek tek şifre gönderip doğru şifreyi bulmaya çalışcağız.
+
+Handshake yakalamak için şifresi kıralacak ağın bilgilerini alacağız ve ağa bağlı bir cihazı küçük deauth saldırısı ile kısa süreliğine
+ağdan düşüreceğiz ağa otomatik tekrar bağlandığında handshake yakalanmış olacak.
+
+aireplay-ng --deauth 5 -a modemMAC -c hedefMAC wlan0mon -> deauth saldırısı 
+
+Handshake'i yakaladıktan sonra:
+
+crunch minHane maxHane olacakKarakterler -o kayıtDosyası -> min kaç karakterden ve max kaç karakterden ve hangi karakterden oluşacağını
+belirtiyoruz ve crunch bütün olasılıkları dosyaya kayıt ediyor.
+
+aircrack-ng capDosyası -w wordlistDosyası -> ağ bilgilerini kaydettiğimiz cap dosyasına wordlist dosyamızı atıyoruz. cap dosyasındaki
+handshake paketlerine otomatik olarak wordlist dosyasındaki bütün kombinasyonlar veriliyor ve eğer wordlistte şifre varsa kırılıyor
+
+crunch çok fazla kullanılan bir yöntem değildir çünkü dosyalar çok yer kaplar ve okuması saatlerce sürebilir ve şifrenin dosyada
+olma ihtimalide düşüktür.

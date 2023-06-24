@@ -1,0 +1,7 @@
+
+/opt/Veil/ içinde python3 Veil.py ile aç
+
+use 1 -> evasion aracını açar bu araç arka kapı oluşturmak, trojan oluşturmak için kullanılabilir
+
+Evasion aracını çalıştırdıktan sonra list diyerek istediğimiz bir modülü seçiyoruz "use 14" gibi. girdikten sonra set ile lhost ve lport'u
+dolduruyoruz. sonra generate diyoruz ve bizden bir isim istiyor ismi veriyoruz ve trojanımız oluşuyor. sonra trojan dosyasını buluyoruz. 
